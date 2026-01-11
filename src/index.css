@@ -68,3 +68,53 @@ footer {
   font-size: 14px;
   color: #64748b;
 }
+
+
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.card-stack {
+  position: relative;
+  width: 760px;
+  max-width: 100%;
+  height: 460px;
+}
+
+.video-card {
+  position: absolute;
+  inset: 0;
+  background: #020617;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.4);
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.video-card iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  border: none;
+}
+
+.video-card h3 {
+  margin-top: 14px;
+}
+
+.video-card p {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.hint {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 13px;
+  color: #64748b;
+}
