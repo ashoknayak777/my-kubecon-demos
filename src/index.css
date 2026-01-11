@@ -55,15 +55,47 @@ header h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 }
 
+/* Give the stage breathing room on both sides */
 .carousel-stage {
   position: relative;
   width: 900px;
-  height: 420px;
-  perspective: 1400px;
+  height: 520px;
+  perspective: 1200px;
+  margin: 0 96px; /* THIS creates space for arrows */
 }
+
+/* Nav buttons stay vertically centered, but OUTSIDE cards */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #cbd5f5;
+  color: #0f172a;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(2, 6, 23, 0.12);
+}
+
+.nav-btn.left {
+  left: -64px; /* pushed away from video */
+}
+
+.nav-btn.right {
+  right: -64px; /* pushed away from video */
+}
+
+.nav-btn:hover {
+  background: #f1f5f9;
+  transform: translateY(-50%) scale(1.05);
+}
+
 
 /* Base card */
 
@@ -134,32 +166,6 @@ header h1 {
 }
 
 /* =========================================================
-   Navigation
-========================================================= */
-
-.nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 1px solid #cbd5f5;
-  color: #020617;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.nav-btn.left {
-  left: 16px;
-}
-
-.nav-btn.right {
-  right: 16px;
-}
-
-/* =========================================================
    Hint
 ========================================================= */
 
@@ -175,7 +181,9 @@ header h1 {
 ========================================================= */
 
 footer {
-  margin-top: 64px;
+  margin-top: 120px; /* pushes it well below carousel */
+  padding-bottom: 32px;
+  text-align: center;
   font-size: 14px;
   color: #64748b;
 }
