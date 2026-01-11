@@ -15,7 +15,7 @@ export default function App() {
       <VideoCarousel />
 
       <footer>
-        © Ashok Nayak · Senior Technical Writer · Kubernetes & DevOps
+        © Ashok Nayak · Senior Technical Writer · Devtron
       </footer>
     </main>
   );
