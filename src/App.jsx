@@ -5,9 +5,9 @@ export default function App() {
   return (
     <main>
       <header>
-        <h1>KubeCon Demo Portfolio</h1>
+        <h1>My KubeCon Demo Portfolio</h1>
         <p className="subtitle">
-          Curated product demonstrations presented at KubeCon, focused on real-world Kubernetes workflows.
+          Product demos I created for my team to present at KubeCon 2025 (Atlanta), focused on real-world Kubernetes workflows.
         </p>
       </header>
 
