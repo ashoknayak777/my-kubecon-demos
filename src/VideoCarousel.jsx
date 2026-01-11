@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import videos from "./videos";
 
 export default function VideoCarousel() {
@@ -6,24 +6,39 @@ export default function VideoCarousel() {
   const intervalRef = useRef(null);
   const total = videos.length;
 
-  // Auto-advance every 3 seconds
-  useEffect(() => {
+  /* ---------- Autoplay control ---------- */
+
+  const startAutoPlay = () => {
+    stopAutoPlay();
     intervalRef.current = setInterval(() => {
       setActive((prev) => (prev + 1) % total);
     }, 3000);
+  };
 
-    return () => clearInterval(intervalRef.current);
+  const stopAutoPlay = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  };
+
+  useEffect(() => {
+    startAutoPlay();
+    return stopAutoPlay;
   }, [total]);
 
-  // Keyboard navigation
+  /* ---------- Keyboard navigation ---------- */
+
   useEffect(() => {
-    const onKey = (e) => {
+    const handleKey = (e) => {
       if (e.key === "ArrowRight") next();
       if (e.key === "ArrowLeft") prev();
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
   });
+
+  /* ---------- Navigation ---------- */
 
   const next = () => {
     setActive((i) => (i + 1) % total);
@@ -49,16 +64,19 @@ export default function VideoCarousel() {
       <div className="carousel-stage">
         {videos.map((video, index) => {
           const position = getPosition(index);
-
           if (position === "hidden") return null;
 
           return (
             <div
               key={index}
               className={`carousel-card-3d ${position}`}
+              onMouseEnter={stopAutoPlay}
+              onMouseLeave={startAutoPlay}
+              onFocus={stopAutoPlay}
+              onBlur={startAutoPlay}
             >
               <iframe
-                src={video.embed}
+                src={`${video.embed}?rel=0`}
                 title={video.title}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
