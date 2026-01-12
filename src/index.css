@@ -293,3 +293,18 @@ footer {
     text-align: center;
   }
 }
+
+@media (max-width: 768px) {
+  .nav-btn {
+    transform: none !important;
+    transition: background-color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  .nav-btn:active,
+  .nav-btn:focus,
+  .nav-btn:hover {
+    transform: none !important;
+  }
+}
